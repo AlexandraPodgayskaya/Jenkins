@@ -1,4 +1,0 @@
-com/epam/esm/configuration/TestConfiguration.java
- com.epam.esm.configuration.TestConfiguration
-com/epam/esm/dao/impl/GiftCertificateDaoImplTest.java
- com.epam.esm.dao.impl.GiftCertificateDaoImplTest
