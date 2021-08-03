@@ -1,0 +1,2 @@
+com/epam/esm/SpringContextTest.java
+ com.epam.esm.SpringContextTest
