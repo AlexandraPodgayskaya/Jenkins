@@ -92,7 +92,7 @@ public class ParametersToDtoConverter {
 			GiftCertificateSearchParametersDto searchParametersDto) {
 		String sortType = parameters.get(SORT_TYPE);
 		String orderType = parameters.get(ORDER_TYPE);
-		if (StringUtils.isNotBlank(sortType) && StringUtils.isNotBlank(sortType)) {
+		if (StringUtils.isNotBlank(sortType) && StringUtils.isNotBlank(orderType)) {
 			checkSortingParameters(sortType, orderType);
 			searchParametersDto.setSortType(SortType.valueOf(sortType.toUpperCase()));
 			searchParametersDto.setOrderType(OrderType.valueOf(orderType.toUpperCase()));
