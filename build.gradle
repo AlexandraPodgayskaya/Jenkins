@@ -3,6 +3,7 @@ version '1.0'
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'jacoco'
 
     sourceCompatibility = '1.8'
     targetCompatibility = '1.8'
@@ -31,8 +32,19 @@ subprojects {
         implementation "org.apache.logging.log4j:log4j-core:$log4jVersion"
     }
     
+    jacocoTestReport{
+        reports {
+            xml.enabled true
+            xml.destination file("${buildDir}/jacoco/test.xml")
+            csv.enabled false
+            html.enabled false
+        }
+        dependsOn test
+    }
+    
     test {
         useJUnitPlatform()
+        finalizedBy jacocoTestReport
     }
     
 }
