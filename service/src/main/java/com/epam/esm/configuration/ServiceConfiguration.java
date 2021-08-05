@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication(scanBasePackages = "com.epam.esm")
 public class ServiceConfiguration {
 
-	private final int BCRYPT_STRENGTH = 12;
+	private static final int BCRYPT_STRENGTH = 12;
 
 	/**
 	 * Create bean ModelMapper which will be used to parse entity to dto and
