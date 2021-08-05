@@ -23,9 +23,9 @@ import com.epam.esm.entity.GiftCertificate;
 public class GiftCertificateQueryCreator {
 
 	private static final String DELETED = "deleted";
-	private final String TAGS = "tags";
-	private final String NAME = "name";
-	private final String DESCRIPTION = "description";
+	private static final String TAGS = "tags";
+	private static final String NAME = "name";
+	private static final String DESCRIPTION = "description";
 	private static final String ZERO_OR_MORE_CHARACTERS = "%";
 
 	/**
@@ -40,7 +40,7 @@ public class GiftCertificateQueryCreator {
 		CriteriaQuery<GiftCertificate> criteriaQuery = criteriaBuilder.createQuery(GiftCertificate.class);
 		Root<GiftCertificate> giftCertificateRoot = criteriaQuery.from(GiftCertificate.class);
 		List<Predicate> restrictions = new ArrayList<>();
-		restrictions.add(addDeletedFalse(searchParameters, criteriaBuilder, giftCertificateRoot));
+		restrictions.add(addDeletedFalse(criteriaBuilder, giftCertificateRoot));
 		restrictions.addAll(addTagNames(searchParameters, criteriaBuilder, giftCertificateRoot));
 		restrictions.addAll(addPartNameOrDescription(searchParameters, criteriaBuilder, giftCertificateRoot));
 		criteriaQuery.select(giftCertificateRoot).where(restrictions.toArray(new Predicate[] {}));
@@ -49,10 +49,8 @@ public class GiftCertificateQueryCreator {
 		return criteriaQuery;
 	}
 
-	private Predicate addDeletedFalse(GiftCertificateSearchParameters searchParameters, CriteriaBuilder criteriaBuilder,
-			Root<GiftCertificate> root) {
-		Predicate predicate = criteriaBuilder.equal(root.get(DELETED), Boolean.FALSE);
-		return predicate;
+	private Predicate addDeletedFalse(CriteriaBuilder criteriaBuilder, Root<GiftCertificate> root) {
+		return criteriaBuilder.equal(root.get(DELETED), Boolean.FALSE);
 	}
 
 	private List<Predicate> addTagNames(GiftCertificateSearchParameters searchParameters,
