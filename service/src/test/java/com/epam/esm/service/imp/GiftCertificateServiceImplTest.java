@@ -113,7 +113,7 @@ public class GiftCertificateServiceImplTest {
 		when(giftCertificateDao.getTotalNumber(isA(GiftCertificateSearchParameters.class))).thenReturn(2L);
 		PageDto<GiftCertificateDto> actualPage = giftCertificateService.findGiftCertificates(pagination,
 				new GiftCertificateSearchParametersDto());
-		assertEquals(page, actualPage);
+		assertEquals(page1, actualPage);
 	}
 
 	@Test
